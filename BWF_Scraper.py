@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 import os
-import time
 
 def_link = 'https://bwf.tournamentsoftware.com/ranking/category.aspx?id=18312&category=472&C472FOC=&ps=100&p=1'
 
