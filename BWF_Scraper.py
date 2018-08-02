@@ -83,8 +83,6 @@ MD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
 WD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
 MIXD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
 
-time.sleep(5)
-
 # Write MS to file
 for links in links_ms:
     page_link = links
@@ -106,8 +104,6 @@ for links in links_ms:
 
 print('MS written to file')
 
-time.sleep(5)
-
 # Write WS to file
 for links in links_ws:
     page_link = links
@@ -128,8 +124,6 @@ for links in links_ws:
         WS.write('\n')
 
 print('DS written to file')
-
-time.sleep(5)
 
 # Write MD to file
 for links in links_md:
@@ -156,8 +150,6 @@ for links in links_md:
 
 print('MD written to file')
 
-time.sleep(5)
-
 # Write WD to file
 for links in links_wd:
     page_link = links
@@ -182,8 +174,6 @@ for links in links_wd:
         WD.write('\n')
 
 print('WD written to file')
-
-time.sleep(5)
 
 # Write MIXD to file
 for links in links_mixd:
