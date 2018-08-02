@@ -76,11 +76,11 @@ WD = open('output/WD.csv', 'wt')
 MIXD = open('output/MIXD.csv', 'wt')
 
 # description to files
-MS.write('Rank,Name,BWF_ID \n')
-WS.write('Rank,Name,BWF_ID \n')
-MD.write('Rank,Name1,Name2,BWF_ID1,BWF_ID2 \n')
-WD.write('Rank,Name1,Name2,BWF_ID1,BWF_ID2 \n')
-MIXD.write('Rank,Name1,Name2,BWF_ID1,BWF_ID2 \n')
+MS.write('Rank;Name;BWF_ID \n')
+WS.write('Rank;Name;BWF_ID \n')
+MD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
+WD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
+MIXD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
 
 # Write MS to file
 for links in links_ms:
@@ -95,9 +95,9 @@ for links in links_ms:
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
         MS.write(rank_nr[x].getText().encode('utf-8'))
-        MS.write(',')
+        MS.write(';')
         MS.write(name[x].find_next_sibling().getText().encode('utf-8'))
-        MS.write(',')
+        MS.write(';')
         MS.write(memberID[x].findNext('td').getText().encode('utf-8'))
         MS.write('\n')
 
@@ -116,9 +116,9 @@ for links in links_ws:
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
         WS.write(rank_nr[x].getText().encode('utf-8'))
-        WS.write(',')
+        WS.write(';')
         WS.write(name[x].find_next_sibling().getText().encode('utf-8'))
-        WS.write(',')
+        WS.write(';')
         WS.write(memberID[x].findNext('td').getText().encode('utf-8'))
         WS.write('\n')
 
@@ -137,13 +137,13 @@ for links in links_md:
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
         MD.write(rank_nr[x].getText().encode('utf-8'))
-        MD.write(',')
+        MD.write(';')
         MD.write(name[x * 2].find_next_sibling().getText().encode('utf-8'))
-        MD.write(',')
+        MD.write(';')
         MD.write(name[(x * 2) + 1].find_next_sibling().getText().encode('utf-8'))
-        MD.write(',')
+        MD.write(';')
         MD.write(memberID[x * 2].findNext('td').findNext('p').getText().encode('utf-8'))
-        MD.write(',')
+        MD.write(';')
         MD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText().encode('utf-8'))
         MD.write('\n')
 
@@ -162,13 +162,13 @@ for links in links_wd:
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
         WD.write(rank_nr[x].getText().encode('utf-8'))
-        WD.write(',')
+        WD.write(';')
         WD.write(name[x * 2].find_next_sibling().getText().encode('utf-8'))
-        WD.write(',')
+        WD.write(';')
         WD.write(name[(x * 2) + 1].find_next_sibling().getText().encode('utf-8'))
-        WD.write(',')
+        WD.write(';')
         WD.write(memberID[x * 2].findNext('td').findNext('p').getText().encode('utf-8'))
-        WD.write(',')
+        WD.write(';')
         WD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText().encode('utf-8'))
         WD.write('\n')
 
@@ -187,13 +187,13 @@ for links in links_mixd:
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
         MIXD.write(rank_nr[x].getText().encode('utf-8'))
-        MIXD.write(',')
+        MIXD.write(';')
         MIXD.write(name[x * 2].find_next_sibling().getText().encode('utf-8'))
-        MIXD.write(',')
+        MIXD.write(';')
         MIXD.write(name[(x * 2) + 1].find_next_sibling().getText().encode('utf-8'))
-        MIXD.write(',')
+        MIXD.write(';')
         MIXD.write(memberID[x * 2].findNext('td').findNext('p').getText().encode('utf-8'))
-        MIXD.write(',')
+        MIXD.write(';')
         MIXD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText().encode('utf-8'))
         MIXD.write('\n')
 
