@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import os
+import io
 
 def_link = 'https://bwf.tournamentsoftware.com/ranking/category.aspx?id=18312&category=472&C472FOC=&ps=100&p=1'
 
@@ -69,18 +70,18 @@ else:
     print('Output folder exist')
 
 # open files
-MS = open('output/MS.csv', 'wt')
-WS = open('output/WS.csv', 'wt')
-MD = open('output/MD.csv', 'wt')
-WD = open('output/WD.csv', 'wt')
-MIXD = open('output/MIXD.csv', 'wt')
+MS = io.open('output/MS.csv', 'wt')
+WS = io.open('output/WS.csv', 'wt')
+MD = io.open('output/MD.csv', 'wt')
+WD = io.open('output/WD.csv', 'wt')
+MIXD = io.open('output/MIXD.csv', 'wt')
 
 # description to files
-MS.write('Rank;Name;BWF_ID \n')
-WS.write('Rank;Name;BWF_ID \n')
-MD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
-WD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
-MIXD.write('Rank;Name1;Name2;BWF_ID1;BWF_ID2 \n')
+MS.write(u'Rank;Name;BWF_ID;\n')
+WS.write(u'Rank;Name;BWF_ID;\n')
+MD.write(u'Rank;Name1;Name2;BWF_ID1;BWF_ID2;\n')
+WD.write(u'Rank;Name1;Name2;BWF_ID1;BWF_ID2;\n')
+MIXD.write(u'Rank;Name1;Name2;BWF_ID1;BWF_ID2;\n')
 
 # Write MS to file
 for links in links_ms:
@@ -94,12 +95,12 @@ for links in links_ms:
     name = page_content.find_all('span', attrs={'class', 'printonly flag'})
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
-        MS.write(rank_nr[x].getText().encode('utf-8'))
-        MS.write(';')
-        MS.write(name[x].find_next_sibling().getText().encode('utf-8'))
-        MS.write(';')
-        MS.write(memberID[x].findNext('td').getText().encode('utf-8'))
-        MS.write('\n')
+        MS.write(rank_nr[x].getText())
+        MS.write(u';')
+        MS.write(name[x].find_next_sibling().getText())
+        MS.write(u';')
+        MS.write(memberID[x].findNext('td').getText())
+        MS.write(u';\n')
 
 print('MS written to file')
 
@@ -115,12 +116,12 @@ for links in links_ws:
     name = page_content.find_all('span', attrs={'class', 'printonly flag'})
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
-        WS.write(rank_nr[x].getText().encode('utf-8'))
-        WS.write(';')
-        WS.write(name[x].find_next_sibling().getText().encode('utf-8'))
-        WS.write(';')
-        WS.write(memberID[x].findNext('td').getText().encode('utf-8'))
-        WS.write('\n')
+        WS.write(rank_nr[x].getText())
+        WS.write(u';')
+        WS.write(name[x].find_next_sibling().getText())
+        WS.write(u';')
+        WS.write(memberID[x].findNext('td').getText())
+        WS.write(u';\n')
 
 print('DS written to file')
 
@@ -136,16 +137,16 @@ for links in links_md:
     name = page_content.find_all('span', attrs={'class', 'printonly flag'})
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
-        MD.write(rank_nr[x].getText().encode('utf-8'))
-        MD.write(';')
-        MD.write(name[x * 2].find_next_sibling().getText().encode('utf-8'))
-        MD.write(';')
-        MD.write(name[(x * 2) + 1].find_next_sibling().getText().encode('utf-8'))
-        MD.write(';')
-        MD.write(memberID[x * 2].findNext('td').findNext('p').getText().encode('utf-8'))
-        MD.write(';')
-        MD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText().encode('utf-8'))
-        MD.write('\n')
+        MD.write(rank_nr[x].getText())
+        MD.write(u';')
+        MD.write(name[x * 2].find_next_sibling().getText())
+        MD.write(u';')
+        MD.write(name[(x * 2) + 1].find_next_sibling().getText())
+        MD.write(u';')
+        MD.write(memberID[x * 2].findNext('td').findNext('p').getText())
+        MD.write(u';')
+        MD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText())
+        MD.write(u';\n')
 
 print('MD written to file')
 
@@ -161,16 +162,16 @@ for links in links_wd:
     name = page_content.find_all('span', attrs={'class', 'printonly flag'})
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
-        WD.write(rank_nr[x].getText().encode('utf-8'))
-        WD.write(';')
-        WD.write(name[x * 2].find_next_sibling().getText().encode('utf-8'))
-        WD.write(';')
-        WD.write(name[(x * 2) + 1].find_next_sibling().getText().encode('utf-8'))
-        WD.write(';')
-        WD.write(memberID[x * 2].findNext('td').findNext('p').getText().encode('utf-8'))
-        WD.write(';')
-        WD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText().encode('utf-8'))
-        WD.write('\n')
+        WD.write(rank_nr[x].getText())
+        WD.write(u';')
+        WD.write(name[x * 2].find_next_sibling().getText())
+        WD.write(u';')
+        WD.write(name[(x * 2) + 1].find_next_sibling().getText())
+        WD.write(u';')
+        WD.write(memberID[x * 2].findNext('td').findNext('p').getText())
+        WD.write(u';')
+        WD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText())
+        WD.write(u';\n')
 
 print('WD written to file')
 
@@ -186,16 +187,16 @@ for links in links_mixd:
     name = page_content.find_all('span', attrs={'class', 'printonly flag'})
     memberID = page_content.find_all('a', attrs={'class': 'icon profile'})
     for x in range(100):
-        MIXD.write(rank_nr[x].getText().encode('utf-8'))
-        MIXD.write(';')
-        MIXD.write(name[x * 2].find_next_sibling().getText().encode('utf-8'))
-        MIXD.write(';')
-        MIXD.write(name[(x * 2) + 1].find_next_sibling().getText().encode('utf-8'))
-        MIXD.write(';')
-        MIXD.write(memberID[x * 2].findNext('td').findNext('p').getText().encode('utf-8'))
-        MIXD.write(';')
-        MIXD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText().encode('utf-8'))
-        MIXD.write('\n')
+        MIXD.write(rank_nr[x].getText())
+        MIXD.write(u';')
+        MIXD.write(name[x * 2].find_next_sibling().getText())
+        MIXD.write(u';')
+        MIXD.write(name[(x * 2) + 1].find_next_sibling().getText())
+        MIXD.write(u';')
+        MIXD.write(memberID[x * 2].findNext('td').findNext('p').getText())
+        MIXD.write(u';')
+        MIXD.write(memberID[x * 2].findNext('td').findNext('p').findNext('p').getText())
+        MIXD.write(u';\n')
 
 print('MIXD written to file')
 
