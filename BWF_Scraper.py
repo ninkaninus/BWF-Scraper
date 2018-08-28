@@ -1,21 +1,36 @@
 from bs4 import BeautifulSoup
 import requests
+import sys
 import os
 import io
 
 def_link = 'https://bwf.tournamentsoftware.com/ranking/category.aspx?id=18312&category=472&C472FOC=&ps=100&p=1'
 
-page_response = requests.get(def_link, timeout=10)
-# parse html
-page_content = BeautifulSoup(page_response.content, "html.parser")
+#Options
+print("For newest rankings write: new")
+print("For specefic number write the 5 numbers")
 
-day_code = []
+#Wait for input
+response = input("Input:")
 
-for option in page_content.find_all('option'):
-    day_code.append('{}'.format(option['value'], option.text))
 
-print('Todays code ' + day_code[0])
-today_link = def_link[:60] + day_code[0] + def_link[65:]
+if(response == "new" or response == "NEW" or response == "New"):
+    page_response = requests.get(def_link, timeout=30)
+    # parse html
+    page_content = BeautifulSoup(page_response.content, "html.parser")
+
+    day_code = []
+
+    for option in page_content.find_all('option'):
+        day_code.append('{}'.format(option['value'], option.text))
+
+    print('Todays code ' + day_code[0])
+    today_link = def_link[:60] + day_code[0] + def_link[65:]
+
+elif(int(response) >= 9999 and int(response) <= 100000):
+    today_link = def_link[:60] + response + def_link[65:]
+
+print("Link used: " + today_link)
 
 links_ms = []
 links_ws = []
@@ -87,7 +102,7 @@ MIXD.write(u'Rank;Name1;Name2;BWF_ID1;BWF_ID2;\n')
 for links in links_ms:
     page_link = links
     # fetch the content from url
-    page_response = requests.get(page_link, timeout=10)
+    page_response = requests.get(page_link, timeout=30)
     # parse html
     page_content = BeautifulSoup(page_response.content, "html.parser")
 
@@ -108,7 +123,7 @@ print('MS written to file')
 for links in links_ws:
     page_link = links
     # fetch the content from url
-    page_response = requests.get(page_link, timeout=10)
+    page_response = requests.get(page_link, timeout=30)
     # parse html
     page_content = BeautifulSoup(page_response.content, "html.parser")
 
@@ -129,7 +144,7 @@ print('DS written to file')
 for links in links_md:
     page_link = links
     # fetch the content from url
-    page_response = requests.get(page_link, timeout=10)
+    page_response = requests.get(page_link, timeout=30)
     # parse html
     page_content = BeautifulSoup(page_response.content, "html.parser")
 
@@ -154,7 +169,7 @@ print('MD written to file')
 for links in links_wd:
     page_link = links
     # fetch the content from url
-    page_response = requests.get(page_link, timeout=10)
+    page_response = requests.get(page_link, timeout=30)
     # parse html
     page_content = BeautifulSoup(page_response.content, "html.parser")
 
@@ -179,7 +194,7 @@ print('WD written to file')
 for links in links_mixd:
     page_link = links
     # fetch the content from url
-    page_response = requests.get(page_link, timeout=10)
+    page_response = requests.get(page_link, timeout=30)
     # parse html
     page_content = BeautifulSoup(page_response.content, "html.parser")
 
