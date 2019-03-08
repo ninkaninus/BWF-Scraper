@@ -75,7 +75,7 @@ for i in range(1):
 
 # make dir
 directory = os.getcwd()
-directory = directory + '/Scraper-OUT'
+directory = directory + 'out/Scraper-OUT'
 print('Checking output folder')
 if not os.path.exists(directory):
     print('Output folder does not exist')
@@ -85,11 +85,11 @@ else:
     print('Output folder exist')
 
 # open files
-MS = io.open('Scraper-OUT/MS.csv', 'wt')
-WS = io.open('Scraper-OUT/WS.csv', 'wt')
-MD = io.open('Scraper-OUT/MD.csv', 'wt')
-WD = io.open('Scraper-OUT/WD.csv', 'wt')
-MIXD = io.open('Scraper-OUT/MIXD.csv', 'wt')
+MS = io.open('out/Scraper-OUT/MS.csv', 'wt')
+WS = io.open('out/Scraper-OUT/WS.csv', 'wt')
+MD = io.open('out/Scraper-OUT/MD.csv', 'wt')
+WD = io.open('out/Scraper-OUT/WD.csv', 'wt')
+MIXD = io.open('out/Scraper-OUT/MIXD.csv', 'wt')
 
 # description to files
 MS.write(u'Rank;Name;BWF_ID;\n')
