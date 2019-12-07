@@ -43,35 +43,35 @@ for i in range(1):
     link_page1 = link_cat[:97] + '1'
     link_page2 = link_cat[:97] + '2'
     links_ms.append(link_page1)
-    links_ms.append(link_page2)
+
 
 for i in range(1):
     link_cat = today_link[:75] + '473&C473' + today_link[83:]
     link_page1 = link_cat[:97] + '1'
     link_page2 = link_cat[:97] + '2'
     links_ws.append(link_page1)
-    links_ws.append(link_page2)
+
 
 for i in range(1):
     link_cat = today_link[:75] + '474&C474' + today_link[83:]
     link_page1 = link_cat[:97] + '1'
     link_page2 = link_cat[:97] + '2'
     links_md.append(link_page1)
-    links_md.append(link_page2)
+
 
 for i in range(1):
     link_cat = today_link[:75] + '475&C475' + today_link[83:]
     link_page1 = link_cat[:97] + '1'
     link_page2 = link_cat[:97] + '2'
     links_wd.append(link_page1)
-    links_wd.append(link_page2)
+
 
 for i in range(1):
     link_cat = today_link[:75] + '476&C476' + today_link[83:]
     link_page1 = link_cat[:97] + '1'
     link_page2 = link_cat[:97] + '2'
     links_mixd.append(link_page1)
-    links_mixd.append(link_page2)
+
 
 # make dir
 directory = os.getcwd()
